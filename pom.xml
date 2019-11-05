@@ -26,6 +26,14 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -33,18 +41,25 @@
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
 
-        <!-- jetty: plugin para servidor local/tipo tomacat-->
+        <!-- jetty: plugin para servidor local/tipo tomcat-->
         <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <version>9.4.3.v20170317</version>
-        </plugin>
+           <!-- Reload do servlet -->
+          <configuration>
+            <scanIntervalSeconds>10</scanIntervalSeconds>
+        <webApp>
+           <contextPath>/sistema-radicheck</contextPath>
+         </webApp>
+       </configuration>
+     </plugin>
 
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+     <plugin>
+       <artifactId>maven-clean-plugin</artifactId>
+       <version>3.1.0</version>
+     </plugin>
+     <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>

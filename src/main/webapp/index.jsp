@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Radicheck</h2>
+<h2>radicheck</h2>
 </body>
 </html>
